@@ -34,5 +34,20 @@ DATABASES = {
 #EMAIL_HOST_USER = 'user'
 #EMAIL_HOST_PASSWORD = 'password'
 
+set_email_backend = $SET_EMAIL_BACKEND
+set_email_use_ssl = $SET_EMAIL_USE_SSL
+
+if set_email_backend:
+    CHANGE_NOTIFICATIONS_MIN_INTERVAL = 300
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    if set_email_use_ssl:
+        EMAIL_USE_SSL = True
+    else:
+        EMAIL_USE_TLS = True
+    EMAIL_HOST = '$SET_EMAIL_HOST'
+    EMAIL_PORT = $SET_EMAIL_PORT
+    EMAIL_HOST_USER = '$SERVER_EMAIL_USER'
+    EMAIL_HOST_PASSWORD = '$SERVER_EMAIL_PASSWORD'
+
 EVENTS_PUSH_BACKEND = "taiga.events.backends.rabbitmq.EventsPushBackend"
 EVENTS_PUSH_BACKEND_OPTIONS = {"url": "amqp://$RABBIT_USER:$RABBIT_PASSWORD@$RABBIT_HOST:$RABBIT_PORT/$RABBIT_VHOST"}

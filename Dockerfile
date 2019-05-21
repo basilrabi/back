@@ -12,7 +12,13 @@ ENV TAIGA_HOST=taiga.lan \
 	RABBIT_USER=taiga \
 	RABBIT_PASSWORD=password \
 	RABBIT_VHOST=taiga \
-	STARTUP_TIMEOUT=15s
+	STARTUP_TIMEOUT=15s \
+	SET_EMAIL_BACKEND=False \
+	SET_EMAIL_USE_SSL=False \
+	SET_EMAIL_HOST=smtp.gmail.com \
+	SET_EMAIL_PORT=587 \
+	SERVER_EMAIL_USER=server@gmail.com \
+	SERVER_EMAIL_PASSWORD=servermailpassword
 
 WORKDIR /srv/taiga
 

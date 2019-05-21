@@ -18,6 +18,12 @@ if [ ! -f $INITIAL_SETUP_LOCK ]; then
         -e 's/$RABBIT_USER/'$RABBIT_USER'/' \
         -e 's/$RABBIT_PASSWORD/'$RABBIT_PASSWORD'/' \
         -e 's/$RABBIT_VHOST/'$RABBIT_VHOST'/' \
+        -e 's/$SET_EMAIL_BACKEND/'$SET_EMAIL_BACKEND'/' \
+        -e 's/$SET_EMAIL_USE_SSL/'$SET_EMAIL_USE_SSL'/' \
+        -e 's/$SET_EMAIL_HOST/'$SET_EMAIL_HOST'/' \
+        -e 's/$SET_EMAIL_PORT/'$SET_EMAIL_PORT'/' \
+        -e 's/$SERVER_EMAIL_USER/'$SERVER_EMAIL_USER'/' \
+        -e 's/$SERVER_EMAIL_PASSWORD/'$SERVER_EMAIL_PASSWORD'/' \
         -i /tmp/taiga-conf/config.py
     cp /tmp/taiga-conf/config.py /taiga-conf/
     ln -sf /taiga-conf/config.py /srv/taiga/back/settings/local.py
